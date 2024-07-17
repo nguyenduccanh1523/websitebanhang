@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<websitebanhang.Models.ShoppingCartItem>
+
+@using websitebanhang.Common
+
+@if (Model != null && Model.Any())
+{
+    <h3>
+        Giỏ hàng
+        <div? style="float: right; border-radius: 50%; background-color: #FE4C50; color: white; text-align: center; width: 35px ">
+            <small>@Model.Count()</small>
+        </div?>
+    </h3>
+    var tongtien = decimal.Zero;
+    <div style="border: 1px solid #808080">
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                tongtien += item.TotalPrice;
+                <tr>
+                    <td>
+                        @item.ProductName
+                        <br />
+                        <b>x @(item.Quantity)</b>
+                    </td>
+                    <td>@Common.FormatNumber(item.Price, 0)</td>
+                </tr>
+
+            }
+            <tr>
+                <th>Tổng tiền: </th>
+                <th>@Common.FormatNumber(tongtien, 0)</th>
+            </tr>
+        </table>
+    </div>
+
+
+}
+else
+{
+}
+

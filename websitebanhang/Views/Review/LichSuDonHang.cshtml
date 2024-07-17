@@ -1,0 +1,31 @@
+﻿﻿@model IEnumerable<websitebanhang.Models.EF.Order>
+@if (Model != null)
+{
+    var i = 1;
+    <h2>Lịch sử mua hàng</h2>
+    <hr/>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>STT</td>
+                <td>Mã DH</td>
+                <td>Tổng tiền</td>
+                <td>Trạng thái</td>
+                <td>Ngày mua </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.Code</td>
+                    <td>@websitebanhang.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
+                    <td>@(item.TypePayment==1? "Chưa thanh toán":"Đã thanh toán")</td>
+                    <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+}
