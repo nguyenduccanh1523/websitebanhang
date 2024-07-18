@@ -77,6 +77,13 @@ namespace websitebanhang
             );
 
             routes.MapRoute(
+                name: "DetailPost",
+                url: "{alias}-p{id}",
+                defaults: new { controller = "Posts", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "websitebanhang.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "News",
                 url: "tinatuc",
                 defaults: new { controller = "News", action = "Index", alias = UrlParameter.Optional },

@@ -268,7 +268,7 @@ namespace websitebanhang.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        
         public ActionResult AddToCart(int id, int quantity)
         {
             var code = new { Success = false, msg = "", code = -1, Count = 0 };
